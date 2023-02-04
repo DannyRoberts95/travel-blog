@@ -4,6 +4,7 @@
  */
 
 export const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
+console.log('projectId', projectId)
 export const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET
 
 // see https://www.sanity.io/docs/api-versioning for how versioning works
