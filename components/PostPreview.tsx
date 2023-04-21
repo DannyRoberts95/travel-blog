@@ -8,10 +8,11 @@ export default function PostPreview({
   title,
   coverImage,
   date,
-  excerpt,
-  author,
+  categories,
   slug,
 }: Omit<Post, '_id'>) {
+  console.log(categories)
+
   return (
     <div>
       <div className="mb-5">
@@ -27,11 +28,11 @@ export default function PostPreview({
           {title}
         </Link>
       </h3>
+
+      {categories && <h4>categories!!</h4>}
       <div className="mb-4 text-lg">
         <Date dateString={date} />
       </div>
-      {excerpt && <p className="mb-4 text-lg leading-relaxed">{excerpt}</p>}
-      {author && <Avatar name={author.name} picture={author.picture} />}
     </div>
   )
 }

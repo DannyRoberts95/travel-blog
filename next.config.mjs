@@ -11,6 +11,7 @@ const config = {
     remotePatterns: [
       { hostname: 'cdn.sanity.io' },
       { hostname: 'source.unsplash.com' },
+      { hostname: 'oaidalleapiprodscus.blob.core.windows.net' },
     ],
   },
   typescript: {

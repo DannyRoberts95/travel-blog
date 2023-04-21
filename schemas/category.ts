@@ -1,4 +1,3 @@
-import { BookIcon } from '@sanity/icons'
 import { format, parseISO } from 'date-fns'
 import { defineField, defineType } from 'sanity'
 
@@ -17,29 +16,23 @@ import authorType from './author'
  */
 
 export default defineType({
-  name: 'post',
-  title: 'Post',
-  icon: BookIcon,
+  name: 'category',
+  title: 'category',
+
   type: 'document',
   fields: [
     defineField({
-      name: 'date',
-      title: 'Date',
-      type: 'datetime',
-      initialValue: () => new Date().toISOString(),
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+      validation: (rule) => rule.required(),
     }),
-    defineField({
-      title: 'Location',
-      name: 'location',
-      type: 'geopoint',
-    }),
-
     defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'date',
+        source: 'title',
         maxLength: 96,
         isUnique: (value, context) => context.defaultIsUnique(value, context),
       },
@@ -47,28 +40,17 @@ export default defineType({
     }),
 
     defineField({
-      name: 'excerpt',
-      title: 'Excerpt',
+      name: 'description',
+      title: 'Description',
       type: 'text',
-    }),
-    defineField({
-      name: 'categories',
-      title: 'Category Tags',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'category' }] }],
     }),
   ],
   preview: {
     select: {
       title: 'title',
-      date: 'date',
     },
-    prepare({ title, date }) {
-      const dateString = [
-        date && `${format(parseISO(date), 'LLLL d yyyy')}`,
-      ].filter(Boolean)
-
-      return { title: dateString.join(' '), subtitle: title }
+    prepare({ title }) {
+      return { title }
     },
   },
 })
