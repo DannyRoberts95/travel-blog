@@ -1,4 +1,3 @@
-import AuthorAvatar from 'components/AuthorAvatar'
 import CoverImage from 'components/CoverImage'
 import Date from 'components/PostDate'
 import type { Post } from 'lib/sanity.queries'
@@ -29,9 +28,6 @@ export default function HeroPost(
         </div>
         <div>
           {excerpt && <p className="mb-4 text-lg leading-relaxed">{excerpt}</p>}
-          {author && (
-            <AuthorAvatar name={author.name} picture={author.picture} />
-          )}
         </div>
       </div>
     </section>

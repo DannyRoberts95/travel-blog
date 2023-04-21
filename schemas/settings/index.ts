@@ -21,6 +21,7 @@ export default defineType({
       initialValue: demo.title,
       validation: (rule) => rule.required(),
     }),
+
     defineField({
       name: 'description',
       description:

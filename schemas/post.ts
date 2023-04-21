@@ -47,15 +47,29 @@ export default defineType({
     }),
 
     defineField({
-      name: 'excerpt',
-      title: 'Excerpt',
-      type: 'text',
-    }),
-    defineField({
       name: 'categories',
       title: 'Category Tags',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'category' }] }],
+    }),
+    defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    }),
+
+    defineField({
+      name: 'coverImage',
+      title: 'Cover Image',
+      type: 'image',
+      options: { hotspot: true },
+    }),
+
+    defineField({
+      name: 'content',
+      title: 'Content',
+      type: 'array',
+      of: [{ type: 'block' }],
     }),
   ],
   preview: {

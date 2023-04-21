@@ -1,38 +1,36 @@
-import Avatar from 'components/AuthorAvatar'
 import CoverImage from 'components/CoverImage'
 import Date from 'components/PostDate'
 import type { Post } from 'lib/sanity.queries'
 import Link from 'next/link'
+import category from 'schemas/category'
 
-export default function PostPreview({
-  title,
-  coverImage,
-  date,
-  categories,
-  slug,
-}: Omit<Post, '_id'>) {
-  console.log(categories)
+import CategoryList from './CategoryList'
+
+export default function PostPreview(props: Omit<Post, '_id'>) {
+  const { title, coverImage, date, categories = [], slug } = props
+
+  console.log(props)
 
   return (
     <div>
-      <div className="mb-5">
-        <CoverImage
-          slug={slug}
-          title={title}
-          image={coverImage}
-          priority={false}
-        />
-      </div>
-      <h3 className="mb-3 text-3xl leading-snug">
-        <Link href={`/posts/${slug}`} className="hover:underline">
-          {title}
-        </Link>
-      </h3>
+      <Link href={`/posts/${slug}`} className="">
+        {coverImage && (
+          <div className="mb-5">
+            <CoverImage
+              slug={slug}
+              title={title}
+              image={coverImage}
+              priority={false}
+            />
+          </div>
+        )}
 
-      {categories && <h4>categories!!</h4>}
-      <div className="mb-4 text-lg">
-        <Date dateString={date} />
-      </div>
+        <div className="mb-4 text-3xl">
+          <Date dateString={date} />
+        </div>
+        <h3 className="text-grey-100 mb-3 text-lg leading-snug">{title}</h3>
+      </Link>
+      <CategoryList categories={categories} disableAdd viewOnly />
     </div>
   )
 }

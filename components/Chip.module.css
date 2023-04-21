@@ -1,0 +1,11 @@
+.root {
+  background-color: var(--bg-color);
+  width: fit-content;
+  padding: 3px 4px;
+  margin-right: 4px;
+
+  display: inline-block;
+
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
