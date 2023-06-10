@@ -28,10 +28,11 @@ export default defineType({
       type: 'datetime',
       initialValue: () => new Date().toISOString(),
     }),
+
     defineField({
-      title: 'Location',
-      name: 'location',
-      type: 'geopoint',
+      name: 'title',
+      title: 'Title',
+      type: 'string',
     }),
 
     defineField({
@@ -39,7 +40,7 @@ export default defineType({
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'date',
+        source: 'title',
         maxLength: 96,
         isUnique: (value, context) => context.defaultIsUnique(value, context),
       },
@@ -51,11 +52,6 @@ export default defineType({
       title: 'Category Tags',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'category' }] }],
-    }),
-    defineField({
-      name: 'title',
-      title: 'Title',
-      type: 'string',
     }),
 
     defineField({
