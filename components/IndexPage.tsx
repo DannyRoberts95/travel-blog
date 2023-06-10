@@ -6,6 +6,8 @@ import MoreStories from 'components/MoreStories'
 import * as demo from 'lib/demo.data'
 import type { Post, Settings } from 'lib/sanity.queries'
 
+import Header from './Header'
+
 export default function IndexPage(props: {
   preview?: boolean
   loading?: boolean
@@ -20,7 +22,6 @@ export default function IndexPage(props: {
     <>
       <Layout preview={preview} loading={loading}>
         <Container>
-          <BlogHeader title={title} description={description} level={1} />
           {posts.length > 0 && <MoreStories posts={posts} />}
         </Container>
       </Layout>

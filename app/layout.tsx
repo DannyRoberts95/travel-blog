@@ -1,5 +1,7 @@
 import 'tailwindcss/tailwind.css'
 
+import Header from 'components/Header'
+
 export default function RootLayout({
   children,
 }: {
@@ -8,7 +10,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head />
-      <body className="bg-white text-black">{children}</body>
+      <body className="bg-white text-black">
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }

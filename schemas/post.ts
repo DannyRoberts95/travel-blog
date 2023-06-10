@@ -23,6 +23,13 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'draft',
+      title: 'Draft',
+      type: 'boolean',
+      initialValue: false,
+    }),
+
+    defineField({
       name: 'date',
       title: 'Date',
       type: 'datetime',
@@ -65,7 +72,7 @@ export default defineType({
       name: 'content',
       title: 'Content',
       type: 'array',
-      of: [{ type: 'block' }],
+      of: [{ type: 'block' }, { type: 'illustration' }],
     }),
   ],
   preview: {
@@ -78,7 +85,7 @@ export default defineType({
         date && `${format(parseISO(date), 'LLLL d yyyy')}`,
       ].filter(Boolean)
 
-      return { title: dateString.join(' '), subtitle: title }
+      return { subtitle: dateString.join(' '), title: title }
     },
   },
 })
