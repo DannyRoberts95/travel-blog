@@ -5,17 +5,16 @@ import Link from 'next/link'
 import category from 'schemas/category'
 
 import CategoryList from './CategoryList'
+import Typography from './Typography'
 
 export default function PostPreview(props: Omit<Post, '_id'>) {
   const { title, coverImage, date, categories = [], slug } = props
 
-  console.log(props)
-
   return (
-    <div>
+    <div className="relative h-[300px] overflow-hidden rounded-lg shadow-md  grayscale transition-all hover:grayscale-0">
       <Link href={`/posts/${slug}`} className="">
         {coverImage && (
-          <div className="mb-5">
+          <div className="absolute mb-5 h-full w-full">
             <CoverImage
               slug={slug}
               title={title}
@@ -25,12 +24,18 @@ export default function PostPreview(props: Omit<Post, '_id'>) {
           </div>
         )}
 
-        <div className="mb-4 text-3xl">
-          <Date dateString={date} />
+        <div className="absolute top-0 mb-4 w-full p-4 text-3xl">
+          <span className="text-white">
+            <CategoryList categories={categories} disableAdd viewOnly />
+          </span>
         </div>
-        <h3 className="text-grey-100 mb-3 text-lg leading-snug">{title}</h3>
+
+        <div className="absolute bottom-0  w-full bg-gradient-to-t from-black to-transparent p-4 text-3xl">
+          <h3 className="font-sans text-3xl capitalize leading-snug text-white">
+            {title}
+          </h3>
+        </div>
       </Link>
-      <CategoryList categories={categories} disableAdd viewOnly />
     </div>
   )
 }

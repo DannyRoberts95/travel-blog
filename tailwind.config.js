@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     './app/**/*.{js,ts,jsx,tsx}',
@@ -9,6 +10,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)'],
+        mono: ['var(--font-roboto-mono)'],
+      },
       colors: {
         'accent-1': '#FAFAFA',
         'accent-2': '#EAEAEA',

@@ -9,12 +9,21 @@
  */
 import { PortableText } from '@portabletext/react'
 
+import CoverImage from './CoverImage'
 import styles from './PostBody.module.css'
 
 export default function PostBody({ content }) {
+  const myPortableTextComponents = {
+    types: {
+      image: ({ value }) => {
+        return <CoverImage title={'title'} image={value.image} />
+      },
+    },
+  }
+
   return (
     <div className={`mx-auto max-w-2xl ${styles.portableText}`}>
-      <PortableText value={content} />
+      <PortableText value={content} components={myPortableTextComponents} />
     </div>
   )
 }

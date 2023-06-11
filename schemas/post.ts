@@ -72,7 +72,7 @@ export default defineType({
       name: 'content',
       title: 'Content',
       type: 'array',
-      of: [{ type: 'block' }, { type: 'illustration' }],
+      of: [{ type: 'block' }, { type: 'image' }],
     }),
   ],
   preview: {

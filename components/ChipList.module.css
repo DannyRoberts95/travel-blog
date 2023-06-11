@@ -5,8 +5,6 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 5px;
-
-  margin: 1rem 0;
 }
 
 .newInput {

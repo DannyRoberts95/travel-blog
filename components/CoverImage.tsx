@@ -19,7 +19,7 @@ export default function CoverImage(props: CoverImageProps) {
       })}
     >
       <Image
-        className="h-auto w-full"
+        className="aspect-video h-auto w-full bg-cover"
         width={2000}
         height={1000}
         alt={`Cover Image for ${title}`}
@@ -33,7 +33,7 @@ export default function CoverImage(props: CoverImageProps) {
   )
 
   return (
-    <div className="sm:mx-0">
+    <div className="overflow-hidden rounded-lg sm:mx-0">
       {slug ? (
         <Link href={`/posts/${slug}`} aria-label={title}>
           {image}
