@@ -1,4 +1,5 @@
 import cn from 'classnames'
+import clsxm from 'lib/clsxm'
 import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -6,12 +7,13 @@ import Link from 'next/link'
 interface CoverImageProps {
   title: string
   slug?: string
+  className?: string
   image: any
   priority?: boolean
 }
 
 export default function CoverImage(props: CoverImageProps) {
-  const { title, slug, image: source, priority } = props
+  const { title, slug, image: source, priority, className } = props
   const image = source?.asset?._ref ? (
     <div
       className={cn('shadow-small', {
@@ -19,9 +21,9 @@ export default function CoverImage(props: CoverImageProps) {
       })}
     >
       <Image
-        className="aspect-video h-auto w-full bg-cover"
-        width={2000}
-        height={1000}
+        className={clsxm('aspect-video h-auto w-full bg-cover', className)}
+        width={1920}
+        height={1080}
         alt={`Cover Image for ${title}`}
         src={urlForImage(source).height(1000).width(2000).url()}
         sizes="100vw"
