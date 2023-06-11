@@ -3,12 +3,18 @@ import 'server-only'
 import { apiVersion, dataset, projectId, useCdn } from 'lib/sanity.api'
 import {
   type Post,
+  type Series,
   type Settings,
+  //series
   getAllSeriesQuery,
+  //posts
   indexQuery,
   postAndMoreStoriesQuery,
   postBySlugQuery,
   postSlugsQuery,
+  seriesAndMoreSeriesQuery,
+  seriesBySlugQuery,
+  seriesSlugsQuery,
   settingsQuery,
 } from 'lib/sanity.queries'
 import { createClient } from 'next-sanity'
@@ -77,4 +83,36 @@ export async function getAllSeries(): Promise<Post[]> {
     return (await client.fetch(getAllSeriesQuery)) || []
   }
   return []
+}
+
+export async function getAllSeriesSlugs(): Promise<Pick<Series, 'slug'>[]> {
+  if (client) {
+    const slugs = (await client.fetch<string[]>(seriesSlugsQuery)) || []
+    return slugs.map((slug) => ({ slug }))
+  }
+  return []
+}
+
+export async function getSeriesBySlug(slug: string): Promise<Series> {
+  if (client) {
+    return (await client.fetch(seriesBySlugQuery, { slug })) || ({} as any)
+  }
+  return {} as any
+}
+
+export async function getSeriesAndMoreSeries(
+  slug: string,
+  token?: string | null
+): Promise<{ series: Series | null; moreSeries: Series[] }> {
+  if (projectId) {
+    const client = createClient({
+      projectId,
+      dataset,
+      apiVersion,
+      useCdn,
+      token: token || undefined,
+    })
+    return await client.fetch(seriesAndMoreSeriesQuery, { slug })
+  }
+  return { series: null, moreSeries: [] }
 }

@@ -4,7 +4,7 @@ import { Category } from 'lib/sanity.queries'
 import React, { SyntheticEvent, useRef, useState } from 'react'
 
 import Chip from './Chip'
-import styles from './ChipList.module.css'
+import styles from './styleModules/ChipList.module.css'
 
 type PropTypes = {
   categories: Category[]
@@ -14,7 +14,7 @@ type PropTypes = {
   disableAdd?: boolean
 }
 
-const CategoryList = (props: PropTypes) => {
+const ChipList = (props: PropTypes) => {
   const {
     categories = [],
     selectedCategories = [],
@@ -91,4 +91,4 @@ const CategoryList = (props: PropTypes) => {
   )
 }
 
-export default CategoryList
+export default ChipList

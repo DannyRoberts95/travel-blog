@@ -15,6 +15,7 @@ const Header = () => {
               width={60}
               height={60}
               alt="DHD Logo"
+              priority
             />
           </Link>
 

@@ -19,7 +19,7 @@ const seriesFields = groq`
   date,
   coverImage,
   "slug": slug.current,
-  // posts[]->{postFields}
+  "posts":posts[]->{postFields}
 `
 
 export const settingsQuery = groq`*[_type == "settings"][0]`
@@ -33,10 +33,10 @@ export const getAllSeriesQuery = groq`
 
 export const seriesAndMoreSeriesQuery = groq`
 {
-  "post": *[_type == "series" && slug.current == $slug && !series.draft] | order(_updatedAt desc) [0] {
+  "series": *[_type == "series" && slug.current == $slug ] | order(_updatedAt desc) [0] {
     ${seriesFields}
   },
-  "moreSeries": *[_type == "series" && slug.current != $slug && !series.draft] | order(date desc, _updatedAt desc) [0...2] {
+  "moreSeries": *[_type == "series" && slug.current != $slug ] | order(date desc, _updatedAt desc) [0...2] {
     ${seriesFields}
   }
 }`
@@ -59,11 +59,11 @@ export const indexQuery = groq`
 
 export const postAndMoreStoriesQuery = groq`
 {
-  "post": *[_type == "post" && slug.current == $slug && !post.draft] | order(_updatedAt desc) [0] {
+  "post": *[_type == "post" && slug.current == $slug ] | order(_updatedAt desc) [0] {
     content,
     ${postFields}
   },
-  "morePosts": *[_type == "post" && slug.current != $slug && !post.draft] | order(date desc, _updatedAt desc) [0...2] {
+  "morePosts": *[_type == "post" && slug.current != $slug ] | order(date desc, _updatedAt desc) [0...2] {
     content,
     ${postFields}
   }

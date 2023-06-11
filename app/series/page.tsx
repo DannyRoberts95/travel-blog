@@ -1,15 +1,11 @@
-import SeriesPage from 'components/SeriesPage'
-import { getAllSeries, getSettings } from 'lib/sanity.client'
-import React from 'react'
+import SeriesIndexPage from 'components/(series)/SeriesIndexPage'
+import { getAllPosts, getAllSeries, getSettings } from 'lib/sanity.client'
 
-export default async function SeriesIndexPage() {
+// FIXME: https://github.com/sanity-io/nextjs-blog-cms-sanity-v3/issues/95
+
+export default async function IndexRoute() {
+  // Fetch queries in parallel
   const [settings, series] = await Promise.all([getSettings(), getAllSeries()])
 
-  return (
-    <SeriesPage
-      settings={settings}
-      series={[...series, ...series, ...series, ...series]}
-    />
-  )
-  // return <SeriesPage settings={settings} series={series} />
+  return <SeriesIndexPage series={series} settings={settings} />
 }

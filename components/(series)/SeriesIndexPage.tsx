@@ -1,12 +1,9 @@
-import HeroPost from 'components/(posts)/HeroPost'
+import SeriesList from 'components/(series)/SeriesList'
 import Container from 'components/BlogContainer'
-import BlogHeader from 'components/BlogHeader'
 import Layout from 'components/BlogLayout'
-import MoreStories from 'components/(posts)/MorePosts'
-import * as demo from 'lib/demo.data'
 import type { Series, Settings } from 'lib/sanity.queries'
 
-export default function PostsIndexPage(props: {
+export default function SeriesIndexPage(props: {
   preview?: boolean
   loading?: boolean
   series: Series[]
@@ -15,13 +12,18 @@ export default function PostsIndexPage(props: {
   const { preview, loading, series, settings } = props
 
   // const { title = demo.title, description = demo.description } = settings || {}
-  const [latestSeries, otherSeries] = series
+
+  // const [latestPost, ...otherPosts] = posts
+
   return (
     <>
       <Layout preview={preview} loading={loading}>
         <Container>
-          <HeroPost {...latestSeries} />
-          {otherSeries.length > 0 && <MoreStories posts={otherSeries} />}
+          <SeriesList
+            title=""
+            series={[...series, ...series, ...series, ...series]}
+          />
+          {/* <SeriesList title="" series={series} /> */}
         </Container>
       </Layout>
     </>

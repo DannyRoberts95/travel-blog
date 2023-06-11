@@ -1,15 +1,16 @@
-import React from 'react';
-import styles from './Chip.module.css';
+import React from 'react'
+
+import styles from './styleModules/Chip.module.css'
 
 type PropTypes = {
-  label: string;
-  selected: boolean;
-  viewOnly: boolean;
-  onClick?: () => void | null;
-};
+  label: string
+  selected: boolean
+  viewOnly: boolean
+  onClick?: () => void | null
+}
 
 const Chip = (props: PropTypes) => {
-  const { label, selected, viewOnly, ...others } = props;
+  const { label, selected, viewOnly, ...others } = props
   return (
     <div
       className={styles.root}
@@ -21,7 +22,7 @@ const Chip = (props: PropTypes) => {
     >
       #{label}
     </div>
-  );
-};
+  )
+}
 
-export default Chip;
+export default Chip

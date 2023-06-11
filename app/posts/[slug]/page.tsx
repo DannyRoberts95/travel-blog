@@ -17,9 +17,10 @@ export default async function SlugRoute({
 }: {
   params: { slug: string }
 }) {
-  // Start fetching settings early, so it runs in parallel with the post query
-  const settings = getSettings()
+  const data = await getPostAndMoreStories(params.slug)
+  const settings = await getSettings()
 
+  // Start fetching settings early, so it runs in parallel with the post query
   // if (previewData()) {
   //   const token = previewData().token || null
   //   const data = getPostAndMoreStories(params.slug, token)
@@ -39,8 +40,7 @@ export default async function SlugRoute({
   //   )
   // }
 
-  const data = getPostAndMoreStories(params.slug)
-  return <PostPage data={await data} settings={await settings} />
+  return <PostPage data={data} settings={settings} />
 }
 
 // FIXME: remove the `revalidate` export below once you've followed the instructions in `/pages/api/revalidate.ts`
