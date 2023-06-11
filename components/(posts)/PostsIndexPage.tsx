@@ -1,8 +1,8 @@
+import HeroPost from 'components/(posts)/HeroPost'
 import Container from 'components/BlogContainer'
 import BlogHeader from 'components/BlogHeader'
 import Layout from 'components/BlogLayout'
-import HeroPost from 'components/HeroPost'
-import MoreStories from 'components/MoreStories'
+import MoreStories from 'components/(posts)/MorePosts'
 import * as demo from 'lib/demo.data'
 import type { Post, Settings } from 'lib/sanity.queries'
 

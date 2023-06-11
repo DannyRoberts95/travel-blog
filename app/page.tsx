@@ -1,5 +1,5 @@
 import Header from 'components/Header'
-import IndexPage from 'components/PostsIndexPage'
+import IndexPage from 'components/(posts)/PostsIndexPage'
 import { getAllPosts, getSettings } from 'lib/sanity.client'
 
 // FIXME: https://github.com/sanity-io/nextjs-blog-cms-sanity-v3/issues/95

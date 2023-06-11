@@ -31,6 +31,26 @@ export const getAllSeriesQuery = groq`
   ${seriesFields}
 }`
 
+export const seriesAndMoreSeriesQuery = groq`
+{
+  "post": *[_type == "series" && slug.current == $slug && !series.draft] | order(_updatedAt desc) [0] {
+    ${seriesFields}
+  },
+  "moreSeries": *[_type == "series" && slug.current != $slug && !series.draft] | order(date desc, _updatedAt desc) [0...2] {
+    ${seriesFields}
+  }
+}`
+
+export const seriesSlugsQuery = groq`
+*[_type == "series" && defined(slug.current)][].slug.current
+`
+
+export const seriesBySlugQuery = groq`
+*[_type == "series" && slug.current == $slug][0] {
+  ${seriesFields}
+}
+`
+
 //POST QUERIES
 export const indexQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {

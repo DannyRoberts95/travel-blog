@@ -9,8 +9,8 @@
  */
 import { PortableText } from '@portabletext/react'
 
-import CoverImage from './CoverImage'
-import styles from './PostBody.module.css'
+import CoverImage from '../CoverImage'
+import styles from '../PostBody.module.css'
 
 export default function PostBody({ content }) {
   const myPortableTextComponents = {
