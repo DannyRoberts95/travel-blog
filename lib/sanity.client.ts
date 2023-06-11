@@ -4,6 +4,7 @@ import { apiVersion, dataset, projectId, useCdn } from 'lib/sanity.api'
 import {
   type Post,
   type Settings,
+  getAllSeriesQuery,
   indexQuery,
   postAndMoreStoriesQuery,
   postBySlugQuery,
@@ -19,12 +20,16 @@ const client = projectId
   ? createClient({ projectId, dataset, apiVersion, useCdn })
   : null
 
+// SETTINGS
+
 export async function getSettings(): Promise<Settings> {
   if (client) {
     return (await client.fetch(settingsQuery)) || {}
   }
   return {}
 }
+
+// POSTS
 
 export async function getAllPosts(): Promise<Post[]> {
   if (client) {
@@ -63,4 +68,13 @@ export async function getPostAndMoreStories(
     return await client.fetch(postAndMoreStoriesQuery, { slug })
   }
   return { post: null, morePosts: [] }
+}
+
+// SERIES
+
+export async function getAllSeries(): Promise<Post[]> {
+  if (client) {
+    return (await client.fetch(getAllSeriesQuery)) || []
+  }
+  return []
 }

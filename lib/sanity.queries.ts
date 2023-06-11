@@ -2,6 +2,7 @@ import { groq } from 'next-sanity'
 
 const postFields = groq`
   _id,
+  draft,
   title,
   date,
   excerpt,
@@ -11,8 +12,26 @@ const postFields = groq`
   "categories": categories[]->{title, slug},
 `
 
+const seriesFields = groq`
+  _id,
+  draft,
+  title,
+  date,
+  coverImage,
+  "slug": slug.current,
+  // posts[]->{postFields}
+`
+
 export const settingsQuery = groq`*[_type == "settings"][0]`
 
+//SERIES QUERIES
+
+export const getAllSeriesQuery = groq`
+*[_type == "series"] | order(date desc, _updatedAt desc) {
+  ${seriesFields}
+}`
+
+//POST QUERIES
 export const indexQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
@@ -20,11 +39,11 @@ export const indexQuery = groq`
 
 export const postAndMoreStoriesQuery = groq`
 {
-  "post": *[_type == "post" && slug.current == $slug] | order(_updatedAt desc) [0] {
+  "post": *[_type == "post" && slug.current == $slug && !post.draft] | order(_updatedAt desc) [0] {
     content,
     ${postFields}
   },
-  "morePosts": *[_type == "post" && slug.current != $slug] | order(date desc, _updatedAt desc) [0...2] {
+  "morePosts": *[_type == "post" && slug.current != $slug && !post.draft] | order(date desc, _updatedAt desc) [0...2] {
     content,
     ${postFields}
   }
@@ -60,6 +79,14 @@ export interface Post {
   categories?: Category[]
   slug?: string
   content?: any
+}
+export interface Series {
+  _id: string
+  title?: string
+  coverImage?: any
+  date?: string
+  slug?: string
+  posts: Post[]
 }
 
 export interface Settings {

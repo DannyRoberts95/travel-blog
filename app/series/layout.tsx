@@ -26,7 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${zen_dots.variable} ${roboto_mono.variable}`}>
       <head />
-      <body className="bg-white text-black">{children}</body>
+      <body className="bg-white text-black">
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }

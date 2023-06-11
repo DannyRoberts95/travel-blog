@@ -20,7 +20,9 @@ const Header = () => {
 
           <nav className="flex gap-2">
             {/* Menu */}
-            <Link href="/">Links</Link>
+            <Link href="/">Home</Link>
+            <Link href="/posts">Posts</Link>
+            <Link href="/series">Series</Link>
           </nav>
         </div>
       </Container>

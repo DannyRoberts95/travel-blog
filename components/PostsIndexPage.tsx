@@ -6,9 +6,7 @@ import MoreStories from 'components/MoreStories'
 import * as demo from 'lib/demo.data'
 import type { Post, Settings } from 'lib/sanity.queries'
 
-import Header from './Header'
-
-export default function IndexPage(props: {
+export default function PostsIndexPage(props: {
   preview?: boolean
   loading?: boolean
   posts: Post[]
@@ -18,11 +16,14 @@ export default function IndexPage(props: {
 
   const { title = demo.title, description = demo.description } = settings || {}
 
+  const [latestPost, ...otherPosts] = posts
+
   return (
     <>
       <Layout preview={preview} loading={loading}>
         <Container>
-          {posts.length > 0 && <MoreStories posts={posts} />}
+          <HeroPost {...latestPost} />
+          {otherPosts.length > 0 && <MoreStories posts={otherPosts} />}
         </Container>
       </Layout>
     </>

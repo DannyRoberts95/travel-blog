@@ -1,6 +1,6 @@
 'use client'
 
-import IndexPage from 'components/IndexPage'
+import IndexPage from 'components/PostsIndexPage'
 import { usePreview } from 'lib/sanity.preview'
 import {
   type Post,
