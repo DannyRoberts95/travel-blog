@@ -7,7 +7,13 @@ export default async function IndexRoute() {
   // Fetch queries in parallel
   const [settings, posts] = await Promise.all([getSettings(), getAllPosts()])
 
-  return <IndexPage posts={posts} settings={settings} />
+  return (
+    <IndexPage
+      posts={[...posts, ...posts, ...posts, ...posts]}
+      settings={settings}
+    />
+  )
+  // return <IndexPage posts={posts} settings={settings} />
 }
 
 // FIXME: remove the `revalidate` export below once you've followed the instructions in `/pages/api/revalidate.ts`

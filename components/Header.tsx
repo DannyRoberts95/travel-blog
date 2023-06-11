@@ -12,8 +12,8 @@ const Header = () => {
           <Link href="/">
             <Image
               src={`/icons/icon.png`}
-              width={40}
-              height={40}
+              width={60}
+              height={60}
               alt="DHD Logo"
             />
           </Link>
@@ -21,7 +21,6 @@ const Header = () => {
           <nav className="flex gap-2">
             {/* Menu */}
             <Link href="/">Links</Link>
-            <Link href="/analytics">Analytics</Link>
           </nav>
         </div>
       </Container>
