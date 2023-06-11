@@ -1,4 +1,4 @@
-import { TagIcon } from '@heroicons/react/24/outline'
+import { Square3Stack3DIcon } from '@heroicons/react/24/outline'
 import { format, parseISO } from 'date-fns'
 import { defineField, defineType } from 'sanity'
 
@@ -15,18 +15,31 @@ import { defineField, defineType } from 'sanity'
  */
 
 export default defineType({
-  name: 'category',
-  title: 'category',
-  icon: TagIcon,
-
+  name: 'series',
+  title: 'Series',
+  icon: Square3Stack3DIcon,
   type: 'document',
   fields: [
+    defineField({
+      name: 'draft',
+      title: 'Draft',
+      type: 'boolean',
+      initialValue: false,
+    }),
+
+    defineField({
+      name: 'date',
+      title: 'Date',
+      type: 'datetime',
+      initialValue: () => new Date().toISOString(),
+    }),
+
     defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (rule) => rule.required(),
     }),
+
     defineField({
       name: 'slug',
       title: 'Slug',
@@ -40,17 +53,31 @@ export default defineType({
     }),
 
     defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'text',
+      name: 'posts',
+      title: 'Posts',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'post' }] }],
+    }),
+
+    defineField({
+      name: 'coverImage',
+      title: 'Cover Image',
+      type: 'image',
+      options: { hotspot: true },
     }),
   ],
   preview: {
     select: {
       title: 'title',
+      date: 'date',
+      media: 'coverImage',
     },
-    prepare({ title }) {
-      return { title }
+    prepare({ title, date, media }) {
+      const dateString = [
+        date && `${format(parseISO(date), 'LLLL d yyyy')}`,
+      ].filter(Boolean)
+
+      return { subtitle: dateString.join(' '), title: title, media }
     },
   },
 })

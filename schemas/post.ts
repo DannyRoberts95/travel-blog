@@ -1,4 +1,4 @@
-import { BookIcon } from '@sanity/icons'
+import { BookOpenIcon } from '@heroicons/react/24/outline'
 import { format, parseISO } from 'date-fns'
 import { defineField, defineType } from 'sanity'
 
@@ -19,7 +19,7 @@ import authorType from './author'
 export default defineType({
   name: 'post',
   title: 'Post',
-  icon: BookIcon,
+  icon: BookOpenIcon,
   type: 'document',
   fields: [
     defineField({

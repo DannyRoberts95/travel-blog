@@ -1,4 +1,4 @@
-import { CogIcon } from '@sanity/icons'
+import { Cog8ToothIcon } from '@heroicons/react/24/outline'
 import * as demo from 'lib/demo.data'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
@@ -8,7 +8,7 @@ export default defineType({
   name: 'settings',
   title: 'Settings',
   type: 'document',
-  icon: CogIcon,
+  icon: Cog8ToothIcon,
   preview: { select: { title: 'title', subtitle: 'description' } },
   // Uncomment below to have edits publish automatically as you type
   // liveEdit: true,

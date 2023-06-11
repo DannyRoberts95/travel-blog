@@ -15,6 +15,7 @@ import authorType from 'schemas/author'
 import categoryType from 'schemas/category'
 import illustrationType from 'schemas/illustration'
 import postType from 'schemas/post'
+import seriesType from 'schemas/series'
 //objects
 import settingsType from 'schemas/settings'
 
@@ -33,6 +34,7 @@ export default defineConfig({
       postType,
       categoryType,
       settingsType,
+      seriesType,
       // Objects
       illustrationType,
     ],
