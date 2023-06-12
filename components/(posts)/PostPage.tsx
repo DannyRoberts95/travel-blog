@@ -33,17 +33,19 @@ export default function PostPage(props: {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            {/* <PostHeader
+            <PostHeader
               title={post.title}
               coverImage={post.coverImage}
               date={post.date}
               author={post.author}
-            /> */}
+            />
             <article>
               <RenderPortableText content={post.content} />
             </article>
-            <SectionSeparator />
-            {morePosts?.length > 0 && <MoreStories posts={morePosts} />}
+
+            {morePosts?.length > 0 && (
+              <MoreStories title="Further Reading" posts={morePosts} />
+            )}
           </>
         )}
       </Container>

@@ -1,6 +1,13 @@
 import React from 'react'
 
-import styles from './styleModules/Chip.module.css'
+// width: fit-content;
+//   padding: 3px 4px;
+//   margin-right: 4px;
+
+//   display: inline-block;
+
+//   text-transform: uppercase;
+//   font-size: 0.875rem;
 
 type PropTypes = {
   label: string
@@ -13,14 +20,14 @@ const Chip = (props: PropTypes) => {
   const { label, selected, viewOnly, ...others } = props
   return (
     <div
-      className={styles.root}
+      className={'w-fit font-mono text-xs uppercase'}
       style={{
         opacity: selected ? 1 : 0.66,
         cursor: viewOnly ? `auto` : `pointer`,
       }}
       {...others}
     >
-      #{label}
+      {label}
     </div>
   )
 }

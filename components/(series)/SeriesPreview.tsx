@@ -10,16 +10,11 @@ export default function SeriesPreview(props: Omit<Post, '_id'>) {
   const { title, coverImage, date, categories = [], slug } = props
 
   return (
-    <div className="relative h-[300px] overflow-hidden rounded-lg shadow-md  grayscale transition-all hover:grayscale-0">
-      <Link href={`/series/${slug}`} className="">
+    <div className="relative min-h-[300px] overflow-hidden rounded-lg shadow-md  grayscale transition-all hover:grayscale-0">
+      <Link href={`/series/${slug}`}>
         {coverImage && (
           <div className="absolute mb-5 h-full w-full transition-all hover:scale-105 ">
-            <CoverImage
-              slug={slug}
-              title={title}
-              image={coverImage}
-              priority={false}
-            />
+            <CoverImage title={title} image={coverImage} priority={false} />
           </div>
         )}
 

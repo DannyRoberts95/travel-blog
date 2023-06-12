@@ -10,9 +10,7 @@ export default function PostList({
 }) {
   return (
     <section>
-      <h2 className="mb-8 text-6xl font-bold leading-tight tracking-tighter md:text-7xl">
-        {title}
-      </h2>
+      <h3 className="mb-6">{title}</h3>
       <div className="md:gap-x-18 mb-32 grid grid-cols-1 gap-y-2">
         {posts.map((post) => (
           <PostPreview

@@ -1,19 +1,20 @@
 import 'tailwindcss/tailwind.css'
+import '../styles/globals.css'
 
-// import '../styles/globals.css'
-import { Inconsolata, Zen_Dots, Zen_Old_Mincho } from '@next/font/google'
-import { Inter, Roboto_Mono } from 'next/font/google'
+import { Crimson_Text, Cutive_Mono, Zen_Dots } from 'next/font/google'
 
-const zen_dots = Inter({
+const crimson_text = Crimson_Text({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-zen-dots',
+  weight: '400',
+  variable: '--font-crimson-text',
 })
 
-const roboto_mono = Roboto_Mono({
+const cutive_mono = Cutive_Mono({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-roboto-mono',
+  weight: '400',
+  variable: '--font-cutive-mono',
 })
 
 import Header from 'components/Header'
@@ -24,7 +25,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${zen_dots.variable} ${roboto_mono.variable}`}>
+    <html
+      lang="en"
+      className={`${crimson_text.variable} ${cutive_mono.variable}`}
+    >
       <head />
       <body className="bg-white text-black">{children}</body>
     </html>

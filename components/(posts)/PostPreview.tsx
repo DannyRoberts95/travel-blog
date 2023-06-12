@@ -1,9 +1,9 @@
 'use client'
 
-import { ArrowRightCircleIcon } from '@heroicons/react/24/outline'
 import CoverImage from 'components/CoverImage'
 import CursorTrackingImage from 'components/CursorTrackingImage'
 import Date from 'components/DateDisplay'
+import SectionSeparator from 'components/SectionSeparator'
 import type { Post } from 'lib/sanity.queries'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -21,13 +21,22 @@ export default function PostPreview(props: Omit<Post, '_id'>) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="flex w-full items-start justify-between gap-x-8 border-t-2 border-black py-2  align-middle">
-        {coverImage && (
-          <CursorTrackingImage image={coverImage} active={hovered} />
-        )}
+      {coverImage && (
+        <CursorTrackingImage image={coverImage} active={hovered} />
+      )}
+
+      <div className=" flex w-full flex-col justify-between gap-x-8 py-2 px-2 align-middle bg-blend-difference sm:flex-row  sm:border-t-2 sm:border-black">
+        {/* Mobile image */}
+        <div className="py-1 sm:hidden">
+          <CoverImage image={coverImage} />
+        </div>
+
+        <div className="mb-2 font-mono text-sm sm:hidden">
+          <Date dateString={date} />
+        </div>
 
         <div className=" flex max-w-[500px] gap-x-8">
-          <div className="mb-2 font-mono text-sm">
+          <div className="mb-2 hidden font-mono text-sm sm:inline-block">
             <Date dateString={date} />
           </div>
           <h3 className="font-mono text-lg capitalize leading-snug ">

@@ -20,10 +20,9 @@ export default function SeriesIndexPage(props: {
       <Layout preview={preview} loading={loading}>
         <Container>
           <SeriesList
-            title=""
+            title="Stoa Series"
             series={[...series, ...series, ...series, ...series]}
           />
-          {/* <SeriesList title="" series={series} /> */}
         </Container>
       </Layout>
     </>
