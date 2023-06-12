@@ -20,7 +20,8 @@ function CursorTrackingImage({
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
   const updatePosition = (e) => {
-    setPosition({ x: e.clientX, y: e.clientY })
+    console.log(e)
+    setPosition({ x: e.screenX, y: e.screenY })
   }
 
   useEffect(() => {
@@ -29,6 +30,8 @@ function CursorTrackingImage({
 
   if (!active) return null
 
+  const src = urlForImage(source).height(1080).width(1080).url()
+
   return (
     <div
       ref={container}
@@ -36,17 +39,16 @@ function CursorTrackingImage({
         left: `${position.x}px`,
         top: `${position.y}px`,
       }}
-      className={`absolute -z-10 max-w-[50%]`}
+      className={`absolute -z-10 w-[500px]`}
     >
       <Image
-        className={clsxm(
-          'aspect-square h-auto w-full rounded-lg bg-cover',
-          className
-        )}
+        className={clsxm('aspect-square h-auto rounded-lg bg-cover', className)}
         width={1080}
         height={1080}
         alt={caption || 'An illustrative image'}
-        src={urlForImage(source).height(1080).width(1080).url()}
+        src={src}
+        placeholder="blur"
+        blurDataURL={src}
       />
     </div>
   )

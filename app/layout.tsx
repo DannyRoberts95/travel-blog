@@ -1,5 +1,5 @@
 import 'tailwindcss/tailwind.css'
-import '../styles/globals.css'
+import '@styles/globals.css'
 
 import { Crimson_Text, Cutive_Mono, Zen_Dots } from 'next/font/google'
 
@@ -16,8 +16,6 @@ const cutive_mono = Cutive_Mono({
   weight: '400',
   variable: '--font-cutive-mono',
 })
-
-import Header from 'components/Header'
 
 export default function RootLayout({
   children,

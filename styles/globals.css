@@ -29,18 +29,6 @@
 }
 
 @layer base {
-  /* inter var - latin */
-  @font-face {
-    font-family: 'Zen Dot';
-    font-style: normal;
-    font-weight: 100 900;
-    font-display: optional;
-    src: url('/fonts/inter-var-latin.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
-      U+2215, U+FEFF, U+FFFD;
-  }
-
   .cursor-newtab {
     cursor: url('/images/new-tab.png') 10 10, pointer;
   }
@@ -49,27 +37,39 @@
 
   h1,
   .h1 {
-    @apply font-sans text-2xl font-bold tracking-tight md:text-4xl;
+    @apply font-serif text-6xl leading-snug tracking-tight lg:text-8xl;
   }
 
   h2,
   .h2 {
+    @apply font-serif text-5xl leading-snug tracking-tight lg:text-7xl;
   }
 
   h3,
   .h3 {
-    @apply mt-8 mb-4 font-sans text-lg font-bold leading-snug  md:text-2xl;
+    @apply font-serif text-3xl leading-snug tracking-tight lg:text-5xl;
   }
 
   h4,
   .h4 {
-    @apply font-sans text-base font-bold md:text-lg;
+    @apply font-serif text-xl leading-snug tracking-tight lg:text-2xl;
+  }
+
+  h5,
+  .h5 {
+    @apply font-serif text-lg font-bold leading-snug tracking-tight lg:text-xl;
+  }
+
+  h6,
+  .h6 {
+    @apply font-serif text-lg font-thin leading-snug tracking-tight;
   }
 
   body,
   .p {
-    @apply font-mono text-sm text-gray-500 md:text-base;
+    @apply font-mono text-lg text-gray-500;
   }
+
   /* #endregion  /**======== Typography =========== */
 
   .layout {

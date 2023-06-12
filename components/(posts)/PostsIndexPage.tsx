@@ -1,8 +1,8 @@
-import HeroPost from 'components/(posts)/HeroPost'
-import MoreStories from 'components/(posts)/PostList'
+import PostList from 'components/(posts)/PostList'
 import Container from 'components/BlogContainer'
-import BlogHeader from 'components/BlogHeader'
 import Layout from 'components/BlogLayout'
+import PageSummary from '@components/SectionSummary'
+import SectionSeparator from 'components/SectionSeparator'
 import * as demo from 'lib/demo.data'
 import type { Post, Settings } from 'lib/sanity.queries'
 
@@ -16,13 +16,15 @@ export default function PostsIndexPage(props: {
 
   const { title = demo.title, description = demo.description } = settings || {}
 
-  const [latestPost, ...otherPosts] = posts
-
   return (
     <Layout preview={preview} loading={loading}>
       <Container>
-        {/* <HeroPost {...latestPost} /> */}
-        {otherPosts.length > 0 && <MoreStories posts={posts} />}
+        <PageSummary
+          title="Stoa Articles"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"
+        />
+        <SectionSeparator />
+        {posts.length > 0 && <PostList posts={posts} />}
       </Container>
     </Layout>
   )

@@ -1,8 +1,7 @@
-import PostHeader from 'components/(posts)/PostHeader'
-import MoreStories from 'components/(posts)/PostList'
+import PageSummary from '@components/SectionSummary'
+import PostList from 'components/(posts)/PostList'
 import PostTitle from 'components/(posts)/PostTitle'
 import Container from 'components/BlogContainer'
-import BlogHeader from 'components/BlogHeader'
 import Layout from 'components/BlogLayout'
 import ChipList from 'components/CategoryList'
 import CoverImage from 'components/CoverImage'
@@ -11,7 +10,6 @@ import RenderPortableText from 'components/RenderPortableText'
 import SectionSeparator from 'components/SectionSeparator'
 import * as demo from 'lib/demo.data'
 import type { Post, Settings } from 'lib/sanity.queries'
-import { notFound } from 'next/navigation'
 
 export default function PostPage(props: {
   preview?: boolean
@@ -56,7 +54,10 @@ export default function PostPage(props: {
 
         <SectionSeparator />
         {morePosts?.length > 0 && (
-          <MoreStories title="Further Reading" posts={morePosts} />
+          <>
+            <PageSummary title={'Further Reading '} />
+            <PostList posts={morePosts} />
+          </>
         )}
       </Container>
     </Layout>

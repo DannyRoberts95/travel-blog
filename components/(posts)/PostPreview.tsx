@@ -22,13 +22,17 @@ export default function PostPreview(props: Omit<Post, '_id'>) {
       onMouseLeave={() => setHovered(false)}
     >
       {coverImage && (
-        <CursorTrackingImage image={coverImage} active={hovered} />
+        <CursorTrackingImage
+          image={coverImage}
+          active={hovered}
+          className="hidden md:absolute"
+        />
       )}
 
-      <div className=" flex w-full flex-col justify-between gap-x-8 py-2 px-2 align-middle bg-blend-difference sm:flex-row  sm:border-t-2 sm:border-black">
+      <div className=" flex w-full flex-col justify-between gap-x-8 py-4 px-2 align-middle bg-blend-difference sm:flex-row  sm:border-t-2 sm:border-black">
         {/* Mobile image */}
         <div className="py-1 sm:hidden">
-          <CoverImage image={coverImage} />
+          <CoverImage image={coverImage} className="rounded-sm" />
         </div>
 
         <div className="mb-2 font-mono text-sm sm:hidden">
@@ -39,9 +43,7 @@ export default function PostPreview(props: Omit<Post, '_id'>) {
           <div className="mb-2 hidden font-mono text-sm sm:inline-block">
             <Date dateString={date} />
           </div>
-          <h3 className="font-mono text-lg capitalize leading-snug ">
-            {title}
-          </h3>
+          <h4>{title}</h4>
         </div>
 
         <CategoryList categories={categories} disableAdd viewOnly />

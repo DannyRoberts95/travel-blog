@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-crimson-text)'],
+        serif: ['var(--font-crimson-text)'],
         mono: ['var(--font-cutive-mono)'],
       },
       colors: {

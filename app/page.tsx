@@ -1,5 +1,4 @@
 import Header from 'components/Header'
-import IndexPage from 'components/(posts)/PostsIndexPage'
 import { getAllPosts, getSettings } from 'lib/sanity.client'
 
 // FIXME: https://github.com/sanity-io/nextjs-blog-cms-sanity-v3/issues/95
@@ -14,7 +13,6 @@ export default async function IndexRoute() {
       HOME PAGE
     </main>
   )
-  // return <IndexPage posts={posts} settings={settings} />
 }
 
 // FIXME: remove the `revalidate` export below once you've followed the instructions in `/pages/api/revalidate.ts`
