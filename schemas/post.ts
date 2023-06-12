@@ -53,6 +53,11 @@ export default defineType({
       },
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+    }),
 
     defineField({
       name: 'categories',
@@ -77,15 +82,16 @@ export default defineType({
   ],
   preview: {
     select: {
+      media: 'coverImage',
       title: 'title',
       date: 'date',
     },
-    prepare({ title, date }) {
+    prepare({ title, date, media }) {
       const dateString = [
         date && `${format(parseISO(date), 'LLLL d yyyy')}`,
       ].filter(Boolean)
 
-      return { subtitle: dateString.join(' '), title: title }
+      return { subtitle: dateString.join(' '), title, media }
     },
   },
 })

@@ -53,10 +53,9 @@ export default defineType({
     }),
 
     defineField({
-      name: 'posts',
-      title: 'Posts',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'post' }] }],
+      name: 'description',
+      title: 'Description',
+      type: 'text',
     }),
 
     defineField({
@@ -65,7 +64,15 @@ export default defineType({
       type: 'image',
       options: { hotspot: true },
     }),
+
+    defineField({
+      name: 'posts',
+      title: 'Posts',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'post' }] }],
+    }),
   ],
+
   preview: {
     select: {
       title: 'title',

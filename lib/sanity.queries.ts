@@ -7,6 +7,7 @@ const postFields = groq`
   date,
   excerpt,
   coverImage,
+  content,
   "slug": slug.current,
   "author": author->{name, picture},
   "categories": categories[]->{title, slug},
@@ -19,7 +20,7 @@ const seriesFields = groq`
   date,
   coverImage,
   "slug": slug.current,
-  "posts":posts[]->{postFields}
+  "posts":posts[]->{${postFields}}
 `
 
 export const settingsQuery = groq`*[_type == "settings"][0]`

@@ -6,6 +6,7 @@ import {
   getPostAndMoreStories,
   getSettings,
 } from 'lib/sanity.client'
+import { notFound } from 'next/navigation'
 // import { previewData } from 'next'
 
 export async function generateStaticParams() {
@@ -17,9 +18,13 @@ export default async function SlugRoute({
 }: {
   params: { slug: string }
 }) {
-  const data = await getPostAndMoreStories(params.slug)
+  const { post, morePosts } = await getPostAndMoreStories(params.slug)
   const settings = await getSettings()
+  const slug = post?.slug
 
+  if (!slug) {
+    notFound()
+  }
   // Start fetching settings early, so it runs in parallel with the post query
   // if (previewData()) {
   //   const token = previewData().token || null
@@ -40,7 +45,7 @@ export default async function SlugRoute({
   //   )
   // }
 
-  return <PostPage data={data} settings={settings} />
+  return <PostPage post={post} morePosts={morePosts} settings={settings} />
 }
 
 // FIXME: remove the `revalidate` export below once you've followed the instructions in `/pages/api/revalidate.ts`

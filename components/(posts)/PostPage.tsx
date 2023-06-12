@@ -4,6 +4,9 @@ import PostTitle from 'components/(posts)/PostTitle'
 import Container from 'components/BlogContainer'
 import BlogHeader from 'components/BlogHeader'
 import Layout from 'components/BlogLayout'
+import ChipList from 'components/CategoryList'
+import CoverImage from 'components/CoverImage'
+import PostDate from 'components/DateDisplay'
 import RenderPortableText from 'components/RenderPortableText'
 import SectionSeparator from 'components/SectionSeparator'
 import * as demo from 'lib/demo.data'
@@ -13,40 +16,47 @@ import { notFound } from 'next/navigation'
 export default function PostPage(props: {
   preview?: boolean
   loading?: boolean
-  data: { post: Post; morePosts: Post[] }
+  morePosts?: Post[]
+  post: Post
+
   settings: Settings
 }) {
-  const { preview, loading, data, settings } = props
-  const { post = {} as any, morePosts = [] } = data || {}
+  const { preview, loading, settings, post = {} as any, morePosts = [] } = props
+
   const { title = demo.title } = settings || {}
-
-  const slug = post?.slug
-
-  if (!slug && !preview) {
-    notFound()
-  }
 
   return (
     <Layout preview={preview} loading={loading}>
       <Container>
-        {preview && !post ? (
-          <PostTitle>Loading…</PostTitle>
-        ) : (
-          <>
-            <PostHeader
-              title={post.title}
-              coverImage={post.coverImage}
-              date={post.date}
-              author={post.author}
-            />
-            <article>
-              <RenderPortableText content={post.content} />
-            </article>
+        <div className="my-8 grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div className=" mb-8  sm:mx-0 md:mb-16">
+            <div className="sticky top-10">
+              <PostDate dateString={post.date} className="mb-4" />
 
-            {morePosts?.length > 0 && (
-              <MoreStories title="Further Reading" posts={morePosts} />
-            )}
-          </>
+              <CoverImage
+                image={post.coverImage}
+                priority
+                className=" mb-6 block md:hidden"
+              />
+              <PostTitle>{post.title}</PostTitle>
+
+              <ChipList categories={post.categories} />
+            </div>
+          </div>
+
+          <article className="">
+            <CoverImage
+              image={post.coverImage}
+              priority
+              className=" mb-6 hidden md:block"
+            />
+            <RenderPortableText content={post.content} />
+          </article>
+        </div>
+
+        <SectionSeparator />
+        {morePosts?.length > 0 && (
+          <MoreStories title="Further Reading" posts={morePosts} />
         )}
       </Container>
     </Layout>
