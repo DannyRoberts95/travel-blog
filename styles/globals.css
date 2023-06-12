@@ -37,32 +37,32 @@
 
   h1,
   .h1 {
-    @apply font-serif text-6xl leading-snug tracking-tight lg:text-8xl;
+    @apply font-serif  text-6xl capitalize leading-snug tracking-tight lg:text-7xl;
   }
 
   h2,
   .h2 {
-    @apply font-serif text-5xl leading-snug tracking-tight lg:text-7xl;
+    @apply font-serif text-5xl capitalize leading-snug tracking-tight lg:text-6xl;
   }
 
   h3,
   .h3 {
-    @apply font-serif text-3xl leading-snug tracking-tight lg:text-5xl;
+    @apply font-serif text-3xl capitalize leading-snug tracking-tight lg:text-5xl;
   }
 
   h4,
   .h4 {
-    @apply font-serif text-xl leading-snug tracking-tight lg:text-2xl;
+    @apply font-serif text-xl capitalize leading-snug tracking-tight lg:text-2xl;
   }
 
   h5,
   .h5 {
-    @apply font-serif text-lg font-bold leading-snug tracking-tight lg:text-xl;
+    @apply font-serif text-lg font-bold capitalize leading-snug tracking-tight lg:text-xl;
   }
 
   h6,
   .h6 {
-    @apply font-serif text-lg font-thin leading-snug tracking-tight;
+    @apply font-serif text-lg font-thin capitalize leading-snug tracking-tight;
   }
 
   body,

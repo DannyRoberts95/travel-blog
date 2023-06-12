@@ -20,7 +20,6 @@ function CursorTrackingImage({
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
   const updatePosition = (e) => {
-    console.log(e)
     setPosition({ x: e.screenX, y: e.screenY })
   }
 
@@ -39,7 +38,7 @@ function CursorTrackingImage({
         left: `${position.x}px`,
         top: `${position.y}px`,
       }}
-      className={`absolute -z-10 w-[500px]`}
+      className={`-z-10 hidden w-[500px] md:absolute`}
     >
       <Image
         className={clsxm('aspect-square h-auto rounded-lg bg-cover', className)}

@@ -2,8 +2,6 @@ import { Cog8ToothIcon } from '@heroicons/react/24/outline'
 import * as demo from 'lib/demo.data'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
-import OpenGraphInput from './OpenGraphInput'
-
 export default defineType({
   name: 'settings',
   title: 'Settings',
@@ -61,18 +59,8 @@ export default defineType({
       title: 'Open Graph Image',
       description:
         'Used for social media previews when linking to the index page.',
-      type: 'object',
-      components: {
-        input: OpenGraphInput as any,
-      },
-      fields: [
-        defineField({
-          name: 'title',
-          title: 'Title',
-          type: 'string',
-          initialValue: demo.ogImageTitle,
-        }),
-      ],
+      type: 'image',
+      options: { hotspot: true },
     }),
   ],
 })

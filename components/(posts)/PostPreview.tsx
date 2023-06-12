@@ -22,11 +22,7 @@ export default function PostPreview(props: Omit<Post, '_id'>) {
       onMouseLeave={() => setHovered(false)}
     >
       {coverImage && (
-        <CursorTrackingImage
-          image={coverImage}
-          active={hovered}
-          className="hidden md:absolute"
-        />
+        <CursorTrackingImage image={coverImage} active={hovered} />
       )}
 
       <div className=" flex w-full flex-col justify-between gap-x-8 py-4 px-2 align-middle bg-blend-difference sm:flex-row  sm:border-t-2 sm:border-black">
