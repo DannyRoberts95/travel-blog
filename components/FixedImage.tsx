@@ -17,15 +17,6 @@ function CursorTrackingImage({
   caption?: string
 }) {
   const container = useRef(null)
-  const [position, setPosition] = useState({ x: 0, y: 0 })
-
-  const updatePosition = (e) => {
-    setPosition({ x: e.screenX, y: e.screenY })
-  }
-
-  useEffect(() => {
-    window.addEventListener('mousemove', updatePosition)
-  }, [])
 
   if (!active) return null
 
@@ -34,14 +25,10 @@ function CursorTrackingImage({
   return (
     <div
       ref={container}
-      style={{
-        left: `${position.x}px`,
-        top: `${position.y}px`,
-      }}
-      className={`-z-10 hidden w-[500px] md:absolute`}
+      className={`fixed left-[50%] top-[50%] -z-10 hidden w-[50%] -translate-x-1/2  -translate-y-1/2 sm:inline `}
     >
       <Image
-        className={clsxm('aspect-square h-auto rounded-lg bg-cover', className)}
+        className={clsxm('aspect-square h-auto rounded-lg ', className)}
         width={1080}
         height={1080}
         alt={caption || 'An illustrative image'}

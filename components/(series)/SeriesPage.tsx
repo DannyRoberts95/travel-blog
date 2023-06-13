@@ -1,25 +1,20 @@
 'use client'
-import PostHeader from 'components/(posts)/PostHeader'
-import MoreStories from 'components/(posts)/PostList'
+import SectionSummary from '@components/SectionSummary'
 import PostPage from 'components/(posts)/PostPage'
-import PostTitle from 'components/(posts)/PostTitle'
-import SeriesHeader from 'components/(series)/SeriesHeader'
 import Container from 'components/BlogContainer'
 import Layout from 'components/BlogLayout'
-import RenderPortableText from 'components/RenderPortableText'
 import SectionSeparator from 'components/SectionSeparator'
-import * as demo from 'lib/demo.data'
 import type { Series, Settings } from 'lib/sanity.queries'
 import { notFound } from 'next/navigation'
 
 export default function SeriesPage(props: {
   preview?: boolean
   loading?: boolean
-  data: { series: Series; moreSeries: Series[] }
+  series: Series
+  moreSeries: Series[]
   settings: Settings
 }) {
-  const { preview, loading, data, settings } = props
-  const { series = {} as any, moreSeries = [] } = data || {}
+  const { preview, loading, series = {} as any, settings } = props
 
   // const { title = demo.title } = settings || {}
   // const { posts = [], title: seriesTitle, description = '' } = series
@@ -30,13 +25,10 @@ export default function SeriesPage(props: {
     notFound()
   }
 
-  console.log(series)
-
   return (
     <Layout preview={preview} loading={loading}>
       <Container>
-        <h2>{series.title}</h2>
-        <p>{series.posts.length}</p>
+        <SectionSummary title={series.title} description={series.description} />
         <SectionSeparator />
         {series.posts.map((post, i) => {
           return (

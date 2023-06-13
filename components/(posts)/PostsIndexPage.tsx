@@ -1,8 +1,8 @@
 import PostList from 'components/(posts)/PostList'
 import Container from 'components/BlogContainer'
 import Layout from 'components/BlogLayout'
-import PageSummary from '@components/SectionSummary'
 import SectionSeparator from 'components/SectionSeparator'
+import SectionSummary from 'components/SectionSummary'
 import * as demo from 'lib/demo.data'
 import type { Post, Settings } from 'lib/sanity.queries'
 
@@ -19,7 +19,8 @@ export default function PostsIndexPage(props: {
   return (
     <Layout preview={preview} loading={loading}>
       <Container>
-        <PageSummary
+        <SectionSeparator />
+        <SectionSummary
           title="Stoa Articles"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"
         />

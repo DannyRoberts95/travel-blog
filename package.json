@@ -30,6 +30,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0",
+    "react-share": "^4.4.1",
     "sanity": "3.0.0-rc.3",
     "sanity-plugin-asset-source-unsplash": "1.0.1",
     "server-only": "^0.0.1",

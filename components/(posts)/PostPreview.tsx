@@ -1,7 +1,7 @@
 'use client'
 
+import CursorTrackingImage from '@components/FixedImage'
 import CoverImage from 'components/CoverImage'
-import CursorTrackingImage from 'components/CursorTrackingImage'
 import Date from 'components/DateDisplay'
 import SectionSeparator from 'components/SectionSeparator'
 import type { Post } from 'lib/sanity.queries'
@@ -25,7 +25,7 @@ export default function PostPreview(props: Omit<Post, '_id'>) {
         <CursorTrackingImage image={coverImage} active={hovered} />
       )}
 
-      <div className=" flex w-full flex-col justify-between gap-x-8 py-4 px-2 align-middle bg-blend-difference sm:flex-row  sm:border-t-2 sm:border-black">
+      <div className=" flex w-full flex-col justify-between gap-x-8 py-4 px-2 align-middle bg-blend-difference sm:flex-row  sm:border-b-2 sm:border-black">
         {/* Mobile image */}
         <div className="py-1 sm:hidden">
           <CoverImage image={coverImage} className="rounded-sm" />

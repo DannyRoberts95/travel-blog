@@ -18,6 +18,7 @@ const seriesFields = groq`
   draft,
   title,
   date,
+  description,
   coverImage,
   "slug": slug.current,
   "posts":posts[]->{${postFields}}

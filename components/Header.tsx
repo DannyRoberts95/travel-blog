@@ -6,7 +6,7 @@ import React from 'react'
 
 const Header = () => {
   return (
-    <header className={clsxm('flex w-full justify-center bg-white')}>
+    <header className={clsxm('flex w-full justify-center')}>
       <Container>
         <div className="flex w-full items-center justify-between py-4">
           <Link href="/">
@@ -19,11 +19,14 @@ const Header = () => {
             />
           </Link>
 
-          <nav className="flex gap-2">
+          <nav className="flex gap-6">
             {/* Menu */}
-            <Link href="/">Home</Link>
-            <Link href="/posts">Posts</Link>
-            <Link href="/series">Series</Link>
+            <Link href="/posts">
+              <h5>Articles</h5>
+            </Link>
+            <Link href="/series">
+              <h5>Series</h5>
+            </Link>
           </nav>
         </div>
       </Container>

@@ -10,7 +10,7 @@ export default async function IndexRoute() {
   return (
     <main>
       <Header />
-      HOME PAGE
+      DATA VIS OF ARTCLES HERE
     </main>
   )
 }

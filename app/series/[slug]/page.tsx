@@ -18,7 +18,7 @@ export default async function SlugRoute({
 }) {
   // Start fetching settings early, so it runs in parallel with the post query
   const settings = await getSettings()
-  const data = await getSeriesAndMoreSeries(params.slug)
+  const { series, moreSeries } = await getSeriesAndMoreSeries(params.slug)
 
   /*
   import { PreviewSuspense } from 'components/PreviewSuspense'
@@ -36,7 +36,9 @@ export default async function SlugRoute({
   }
   // */
 
-  return <SeriesPage data={data} settings={settings} />
+  return (
+    <SeriesPage series={series} moreSeries={moreSeries} settings={settings} />
+  )
 }
 
 // FIXME: remove the `revalidate` export below once you've followed the instructions in `/pages/api/revalidate.ts`
